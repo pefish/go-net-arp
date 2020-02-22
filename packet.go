@@ -231,7 +231,7 @@ func (p *Packet) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-func parsePacket(buf []byte) (*Packet, *ethernet.Frame, error) {
+func ParsePacket(buf []byte) (*Packet, *ethernet.Frame, error) {
 	f := new(ethernet.Frame)
 	if err := f.UnmarshalBinary(buf); err != nil {
 		return nil, nil, err
