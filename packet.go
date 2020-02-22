@@ -20,7 +20,7 @@ var (
 
 	// errInvalidARPPacket is returned when an ethernet frame does not
 	// indicate that an ARP packet is contained in its payload.
-	errInvalidARPPacket = errors.New("invalid ARP packet")
+	ErrInvalidARPPacket = errors.New("invalid ARP packet")
 )
 
 //go:generate stringer -output=string.go -type=Operation
@@ -239,7 +239,7 @@ func ParsePacket(buf []byte) (*Packet, *ethernet.Frame, error) {
 
 	// Ignore frames which do not have ARP EtherType
 	if f.EtherType != ethernet.EtherTypeARP {
-		return nil, nil, errInvalidARPPacket
+		return nil, nil, ErrInvalidARPPacket
 	}
 
 	p := new(Packet)
